@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Luis Pascual — Senior Product Designer especializado en Design Systems, Accesibilidad y DesignOps">
+    <meta name="theme-color" content="#0a0a0a">
+    <title>Luis Pascual — Senior Product Designer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Satoshi:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #0a0a0a;
+            --white: #fafafa;
+            --gray-100: #f5f5f5;
+            --gray-200: #e5e5e5;
+            --gray-400: #737373;
+            --gray-600: #525252;
+            --focus-color: #0066cc;
+            --serif: 'Instrument Serif', Georgia, serif;
+            --sans: 'Satoshi', -apple-system, sans-serif;
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* Reduced motion preference */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            html {
+                scroll-behavior: auto;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 100%;
+        }
+
+        body {
+            font-family: var(--sans);
+            background: var(--white);
+            color: var(--black);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        ::selection {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        /* Skip Link - Accessibility */
+        .skip-link {
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--black);
+            color: var(--white);
+            padding: 12px 24px;
+            text-decoration: none;
+            font-weight: 500;
+            z-index: 10000;
+            border-radius: 0 0 8px 8px;
+            transition: top 0.3s ease;
+        }
+
+        .skip-link:focus {
+            top: 0;
+            outline: 3px solid var(--focus-color);
+            outline-offset: 2px;
+        }
+
+        /* Focus styles - WCAG compliant */
+        a:focus-visible,
+        button:focus-visible,
+        [tabindex]:focus-visible {
+            outline: 3px solid var(--focus-color);
+            outline-offset: 3px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: transparent;
+        }
+
+        nav.scrolled {
+            background: rgba(250, 250, 250, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 1px 0 var(--gray-200);
+        }
+
+        nav.scrolled .logo,
+        nav.scrolled .nav-links a,
+        nav.scrolled .lang-switch button {
+            color: var(--black);
+        }
+
+        .logo {
+            font-family: var(--sans);
+            font-weight: 500;
+            font-size: 0.875rem;
+            letter-spacing: 0.02em;
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.8125rem;
+            font-weight: 400;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            position: relative;
+            padding: 0.25rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: currentColor;
+            transition: width 0.4s var(--ease-out-expo);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a:focus::after {
+            width: 100%;
+        }
+
+        /* Language Switch */
+        .lang-switch {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .lang-switch button {
+            background: transparent;
+            border: 1px solid transparent;
+            color: var(--white);
+            font-family: var(--sans);
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            padding: 0.5rem 0.75rem;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .lang-switch button:hover {
+            border-color: currentColor;
+        }
+
+        .lang-switch button.active {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        nav.scrolled .lang-switch button.active {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            width: 44px;
+            height: 44px;
+            cursor: pointer;
+            position: relative;
+            z-index: 200;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+            margin: 6px auto;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled .menu-toggle span {
+            background: var(--black);
+        }
+
+        .menu-toggle[aria-expanded="true"] span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-toggle[aria-expanded="true"] span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle[aria-expanded="true"] span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 3rem;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(180deg, var(--black) 0%, #1a1a1a 100%);
+        }
+
+        .hero-content {
+            max-width: 56rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-greeting {
+            font-family: var(--serif);
+            font-size: clamp(0.875rem, 2vw, 1.125rem);
+            font-style: italic;
+            color: var(--gray-400);
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s var(--ease-out-expo) 0.2s forwards;
+        }
+
+        .hero-title {
+            font-family: var(--serif);
+            font-size: clamp(2.5rem, 7vw, 6rem);
+            font-weight: 400;
+            line-height: 1.08;
+            letter-spacing: -0.03em;
+            margin-bottom: 2rem;
+            color: var(--white);
+        }
+
+        .hero-title .line {
+            display: block;
+            overflow: hidden;
+        }
+
+        .hero-title .line span {
+            display: block;
+            opacity: 0;
+            transform: translateY(100%);
+            animation: slideUp 1.2s var(--ease-out-expo) forwards;
+        }
+
+        .hero-title .line:nth-child(1) span { animation-delay: 0.3s; }
+        .hero-title .line:nth-child(2) span { animation-delay: 0.4s; }
+        .hero-title .line:nth-child(3) span { animation-delay: 0.5s; }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            font-weight: 300;
+            color: var(--gray-400);
+            max-width: 38rem;
+            line-height: 1.7;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s var(--ease-out-expo) 0.7s forwards;
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 3rem;
+            left: 3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gray-400);
+            opacity: 0;
+            animation: fadeUp 1s var(--ease-out-expo) 1s forwards;
+        }
+
+        .hero-scroll .line {
+            width: 3rem;
+            height: 1px;
+            background: var(--gray-400);
+            transform-origin: left;
+            animation: expandLine 1s var(--ease-out-expo) 1.2s forwards;
+            transform: scaleX(0);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 7.5rem 3rem;
+        }
+
+        .section-header {
+            margin-bottom: 5rem;
+        }
+
+        .section-label {
+            font-size: 0.6875rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gray-400);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: var(--serif);
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+        }
+
+        /* Manifesto Section */
+        .manifesto {
+            background: var(--black);
+            color: var(--white);
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .manifesto-content {
+            max-width: 60rem;
+        }
+
+        .manifesto-text {
+            font-family: var(--serif);
+            font-size: clamp(1.25rem, 3.5vw, 2.25rem);
+            line-height: 1.55;
+            font-weight: 400;
+        }
+
+        .manifesto-text em {
+            font-style: italic;
+            color: var(--gray-400);
+        }
+
+        /* Experiments Grid */
+        .experiments {
+            background: var(--gray-100);
+        }
+
+        .experiments-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .experiment-card {
+            background: var(--white);
+            border-radius: 1rem;
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            min-height: 22rem;
+            transition: transform 0.6s var(--ease-out-expo),
+                        box-shadow 0.6s var(--ease-out-expo);
+        }
+
+        .experiment-card:hover,
+        .experiment-card:focus {
+            transform: translateY(-8px);
+            box-shadow: 0 2rem 4rem rgba(0,0,0,0.08);
+        }
+
+        .card-number {
+            font-size: 0.6875rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            color: var(--gray-400);
+            margin-bottom: 1.5rem;
+        }
+
+        .card-icon {
+            width: 3.5rem;
+            height: 3.5rem;
+            background: var(--black);
+            border-radius: 0.875rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.75rem;
+            transition: transform 0.4s var(--ease-out-expo);
+        }
+
+        .experiment-card:hover .card-icon,
+        .experiment-card:focus .card-icon {
+            transform: scale(1.1) rotate(-3deg);
+        }
+
+        .card-icon svg {
+            width: 1.5rem;
+            height: 1.5rem;
+            stroke: var(--white);
+            stroke-width: 1.5;
+            fill: none;
+        }
+
+        .card-title {
+            font-family: var(--serif);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .card-description {
+            font-size: 0.9375rem;
+            color: var(--gray-600);
+            line-height: 1.7;
+            flex-grow: 1;
+        }
+
+        .card-tag {
+            display: inline-block;
+            font-size: 0.6875rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 0.5rem 1rem;
+            background: var(--gray-100);
+            border-radius: 100px;
+            margin-top: 1.5rem;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .experiment-card:hover .card-tag,
+        .experiment-card:focus .card-tag {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        /* Resources Section */
+        .resources {
+            background: var(--white);
+        }
+
+        .resources-list {
+            display: flex;
+            flex-direction: column;
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .resource-item {
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            gap: 2rem;
+            align-items: center;
+            padding: 1.75rem 0;
+            background: var(--white);
+            text-decoration: none;
+            color: inherit;
+            border-bottom: 1px solid var(--gray-200);
+            transition: padding 0.4s var(--ease-out-expo);
+        }
+
+        .resource-item:hover,
+        .resource-item:focus {
+            padding-left: 1.5rem;
+        }
+
+        .resource-info {
+            display: flex;
+            align-items: baseline;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .resource-title {
+            font-family: var(--serif);
+            font-size: 1.375rem;
+            letter-spacing: -0.01em;
+        }
+
+        .resource-type {
+            font-size: 0.75rem;
+            color: var(--gray-400);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .resource-description {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            max-width: 18rem;
+        }
+
+        .resource-arrow {
+            width: 2.75rem;
+            height: 2.75rem;
+            border-radius: 50%;
+            border: 1px solid var(--gray-200);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.4s var(--ease-out-expo);
+        }
+
+        .resource-item:hover .resource-arrow,
+        .resource-item:focus .resource-arrow {
+            background: var(--black);
+            border-color: var(--black);
+        }
+
+        .resource-arrow svg {
+            width: 1rem;
+            height: 1rem;
+            stroke: var(--black);
+            stroke-width: 1.5;
+            fill: none;
+            transition: stroke 0.4s ease, transform 0.4s var(--ease-out-expo);
+        }
+
+        .resource-item:hover .resource-arrow svg,
+        .resource-item:focus .resource-arrow svg {
+            stroke: var(--white);
+            transform: translateX(3px);
+        }
+
+        /* About Section */
+        .about {
+            background: var(--gray-100);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+        }
+
+        .about-text {
+            font-size: 1.0625rem;
+            line-height: 1.8;
+            color: var(--gray-600);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text strong {
+            color: var(--black);
+            font-weight: 500;
+        }
+
+        .about-details {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        .detail-block h3 {
+            font-size: 0.6875rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gray-400);
+            margin-bottom: 1rem;
+        }
+
+        .detail-block ul {
+            list-style: none;
+        }
+
+        .detail-block li {
+            font-size: 0.9375rem;
+            padding: 0.625rem 0;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .detail-block li:last-child {
+            border-bottom: none;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--black);
+            color: var(--white);
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-content {
+            width: 100%;
+        }
+
+        .contact-title {
+            font-family: var(--serif);
+            font-size: clamp(3rem, 10vw, 8rem);
+            font-weight: 400;
+            letter-spacing: -0.03em;
+            line-height: 1;
+            margin-bottom: 3rem;
+        }
+
+        .contact-title a {
+            color: inherit;
+            text-decoration: none;
+            position: relative;
+            display: inline-block;
+        }
+
+        .contact-title a::after {
+            content: '';
+            position: absolute;
+            bottom: 0.05em;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--white);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.6s var(--ease-out-expo);
+        }
+
+        .contact-title a:hover::after,
+        .contact-title a:focus::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .contact-links a {
+            font-size: 0.875rem;
+            color: var(--gray-400);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .contact-links a:hover,
+        .contact-links a:focus {
+            color: var(--white);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            color: var(--gray-400);
+            padding: 1.5rem 3rem;
+            font-size: 0.75rem;
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes expandLine {
+            to {
+                transform: scaleX(1);
+            }
+        }
+
+        /* Scroll Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s var(--ease-out-expo),
+                        transform 0.8s var(--ease-out-expo);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Language content toggle */
+        [data-lang="en"] { display: none; }
+        html[lang="en"] [data-lang="en"] { display: block; }
+        html[lang="en"] [data-lang="es"] { display: none; }
+
+        /* Inline language elements */
+        span[data-lang="en"],
+        a[data-lang="en"] { display: none; }
+        html[lang="en"] span[data-lang="en"],
+        html[lang="en"] a[data-lang="en"] { display: inline; }
+        html[lang="en"] span[data-lang="es"],
+        html[lang="en"] a[data-lang="es"] { display: none; }
+
+        /* Responsive - Tablet */
+        @media (max-width: 1024px) {
+            nav {
+                padding: 1.25rem 1.5rem;
+            }
+            
+            section {
+                padding: 5rem 1.5rem;
+            }
+            
+            .hero {
+                padding: 0 1.5rem;
+            }
+            
+            .experiments-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .contact-links {
+                flex-wrap: wrap;
+                gap: 1.5rem;
+            }
+
+            .resource-description {
+                display: none;
+            }
+
+            .resource-item {
+                grid-template-columns: 1fr auto;
+            }
+        }
+
+        /* Responsive - Mobile */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .nav-container {
+                position: fixed;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                width: 100%;
+                max-width: 320px;
+                background: var(--white);
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                padding: 2rem;
+                transform: translateX(100%);
+                transition: transform 0.4s var(--ease-out-expo);
+                box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+            }
+
+            .nav-container.open {
+                transform: translateX(0);
+            }
+
+            .nav-container .nav-links {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .nav-container .nav-links a {
+                color: var(--black);
+                font-size: 1.25rem;
+            }
+
+            .nav-container .lang-switch {
+                margin-top: 2rem;
+            }
+
+            .nav-container .lang-switch button {
+                color: var(--black);
+            }
+
+            .nav-container .lang-switch button.active {
+                background: var(--black);
+                color: var(--white);
+            }
+            
+            .hero-scroll {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: clamp(2rem, 10vw, 3rem);
+            }
+
+            .experiment-card {
+                padding: 1.75rem;
+                min-height: auto;
+            }
+
+            .card-title {
+                font-size: 1.25rem;
+            }
+
+            .resource-info {
+                flex-direction: column;
+                gap: 0.25rem;
+            }
+
+            .resource-title {
+                font-size: 1.125rem;
+            }
+            
+            footer {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+                padding: 1.5rem;
+            }
+
+            .section-header {
+                margin-bottom: 3rem;
+            }
+
+            .manifesto-text {
+                font-size: clamp(1.125rem, 4vw, 1.5rem);
+            }
+        }
+
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            :root {
+                --gray-400: #595959;
+                --gray-600: #404040;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            nav, .hero-scroll, .menu-toggle {
+                display: none;
+            }
+            
+            .hero {
+                min-height: auto;
+                background: var(--white);
+                color: var(--black);
+                padding: 2rem;
+            }
+
+            .hero-title {
+                color: var(--black);
+            }
+
+            section {
+                padding: 2rem;
+                break-inside: avoid;
+            }
+
+            .manifesto {
+                background: var(--white);
+                color: var(--black);
+                min-height: auto;
+            }
+
+            .contact {
+                background: var(--white);
+                color: var(--black);
+                min-height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip Link -->
+    <a href="#main-content" class="skip-link" data-lang="es">Saltar al contenido principal</a>
+    <a href="#main-content" class="skip-link" data-lang="en">Skip to main content</a>
+
+    <!-- Navigation -->
+    <nav role="navigation" aria-label="Main navigation">
+        <a href="#" class="logo" aria-label="Luis Pascual - Home">Luis Pascual</a>
+        
+        <button class="menu-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div class="nav-container" id="nav-menu">
+            <ul class="nav-links" role="list">
+                <li>
+                    <a href="#experiments" data-lang="es">Experimentos</a>
+                    <a href="#experiments" data-lang="en">Experiments</a>
+                </li>
+                <li>
+                    <a href="#resources" data-lang="es">Recursos</a>
+                    <a href="#resources" data-lang="en">Resources</a>
+                </li>
+                <li>
+                    <a href="#about" data-lang="es">Sobre mí</a>
+                    <a href="#about" data-lang="en">About</a>
+                </li>
+                <li>
+                    <a href="#contact" data-lang="es">Contacto</a>
+                    <a href="#contact" data-lang="en">Contact</a>
+                </li>
+            </ul>
+            
+            <div class="lang-switch" role="group" aria-label="Language selection">
+                <button type="button" lang="es" class="active" aria-pressed="true">ES</button>
+                <button type="button" lang="en" aria-pressed="false">EN</button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <!-- Hero -->
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-content">
+                <p class="hero-greeting" data-lang="es">Hola, soy Luis —</p>
+                <p class="hero-greeting" data-lang="en">Hi, I'm Luis —</p>
+                
+                <h1 class="hero-title" id="hero-title">
+                    <span class="line" data-lang="es"><span>Senior Product</span></span>
+                    <span class="line" data-lang="es"><span>Designer con foco</span></span>
+                    <span class="line" data-lang="es"><span>en Design Systems</span></span>
+                    
+                    <span class="line" data-lang="en"><span>Senior Product</span></span>
+                    <span class="line" data-lang="en"><span>Designer focused</span></span>
+                    <span class="line" data-lang="en"><span>on Design Systems</span></span>
+                </h1>
+                
+                <p class="hero-subtitle" data-lang="es">
+                    +20 años conectando diseño, desarrollo y negocio en entornos de alta exigencia. 
+                    Certificado Scrum Master. Especializado en accesibilidad y DesignOps.
+                </p>
+                <p class="hero-subtitle" data-lang="en">
+                    +20 years connecting design, development and business in demanding environments. 
+                    Certified Scrum Master. Specialized in accessibility and DesignOps.
+                </p>
+            </div>
+            <div class="hero-scroll" aria-hidden="true">
+                <span class="line"></span>
+                Scroll
+            </div>
+        </section>
+
+        <!-- Manifesto -->
+        <section class="manifesto" aria-labelledby="manifesto-heading">
+            <h2 id="manifesto-heading" class="visually-hidden" data-lang="es">Mi enfoque</h2>
+            <h2 id="manifesto-heading" class="visually-hidden" data-lang="en">My approach</h2>
+            
+            <div class="manifesto-content reveal">
+                <p class="manifesto-text" data-lang="es">
+                    Aquí no verás case studies. Los proyectos de los que me siento orgulloso están protegidos por cláusulas de confidencialidad. <em>Lo que sí verás</em> son las aplicaciones que he creado de cero, mis aportaciones a la comunidad: plugins, templates, artículos… Material suficiente para que me conozcas, <em>veas cómo trabajo, cómo pienso</em>, y valores si mi perfil encaja en tu equipo. En el fondo, <em>es eso de lo que se trata, ¿no?</em>
+                </p>
+                <p class="manifesto-text" data-lang="en">
+                    You won't find case studies here. The projects I'm proud of are protected by confidentiality agreements. <em>What you will find</em> are the applications I've built from scratch, my contributions to the community: plugins, templates, articles… Enough material for you to know me, <em>see how I work, how I think</em>, and assess if my profile fits your team. After all, <em>that's what it's all about, right?</em>
+                </p>
+            </div>
+        </section>
+
+        <!-- Experiments -->
+        <section class="experiments" id="experiments" aria-labelledby="experiments-title">
+            <header class="section-header reveal">
+                <p class="section-label" data-lang="es">01 — Experimentos con IA</p>
+                <p class="section-label" data-lang="en">01 — AI Experiments</p>
+                <h2 class="section-title" id="experiments-title" data-lang="es">Aplicaciones que<br>he construido</h2>
+                <h2 class="section-title" id="experiments-title" data-lang="en">Applications I've<br>built</h2>
+            </header>
+            
+            <div class="experiments-grid">
+                <a href="#" class="experiment-card reveal" aria-labelledby="exp-1-title">
+                    <span class="card-number" aria-hidden="true">01</span>
+                    <div class="card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <h3 class="card-title" id="exp-1-title">DesignLint AI</h3>
+                    <p class="card-description" data-lang="es">
+                        Herramienta que analiza sistemas de diseño en Figma y detecta inconsistencias usando visión artificial. Reduce el tiempo de auditoría un 70%.
+                    </p>
+                    <p class="card-description" data-lang="en">
+                        Tool that analyzes design systems in Figma and detects inconsistencies using computer vision. Reduces audit time by 70%.
+                    </p>
+                    <span class="card-tag">Figma Plugin + AI</span>
+                </a>
+
+                <a href="#" class="experiment-card reveal" aria-labelledby="exp-2-title">
+                    <span class="card-number" aria-hidden="true">02</span>
+                    <div class="card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    </div>
+                    <h3 class="card-title" id="exp-2-title">TokenSync</h3>
+                    <p class="card-description" data-lang="es">
+                        Sincronización automática de design tokens entre Figma y Storybook. Elimina la fricción entre diseño y desarrollo.
+                    </p>
+                    <p class="card-description" data-lang="en">
+                        Automatic design token sync between Figma and Storybook. Eliminates friction between design and development.
+                    </p>
+                    <span class="card-tag">Open Source Tool</span>
+                </a>
+
+                <a href="#" class="experiment-card reveal" aria-labelledby="exp-3-title">
+                    <span class="card-number" aria-hidden="true">03</span>
+                    <div class="card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    </div>
+                    <h3 class="card-title" id="exp-3-title">A11y Copilot</h3>
+                    <p class="card-description" data-lang="es">
+                        Asistente conversacional que ayuda a equipos de producto a implementar WCAG 2.2 durante el proceso de diseño, no después.
+                    </p>
+                    <p class="card-description" data-lang="en">
+                        Conversational assistant that helps product teams implement WCAG 2.2 during the design process, not after.
+                    </p>
+                    <span class="card-tag">AI Assistant</span>
+                </a>
+
+                <a href="#" class="experiment-card reveal" aria-labelledby="exp-4-title">
+                    <span class="card-number" aria-hidden="true">04</span>
+                    <div class="card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
+                    </div>
+                    <h3 class="card-title" id="exp-4-title">Handoff Automator</h3>
+                    <p class="card-description" data-lang="es">
+                        Genera documentación de handoff estructurada automáticamente a partir de componentes de Figma. Specs, tokens y variantes.
+                    </p>
+                    <p class="card-description" data-lang="en">
+                        Automatically generates structured handoff documentation from Figma components. Specs, tokens and variants.
+                    </p>
+                    <span class="card-tag">Workflow Tool</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Resources -->
+        <section class="resources" id="resources" aria-labelledby="resources-title">
+            <header class="section-header reveal">
+                <p class="section-label" data-lang="es">02 — Recursos</p>
+                <p class="section-label" data-lang="en">02 — Resources</p>
+                <h2 class="section-title" id="resources-title" data-lang="es">Aportaciones a<br>la comunidad</h2>
+                <h2 class="section-title" id="resources-title" data-lang="en">Community<br>contributions</h2>
+            </header>
+
+            <div class="resources-list" role="list">
+                <a href="#" class="resource-item reveal" role="listitem">
+                    <div class="resource-info">
+                        <h3 class="resource-title">DS Audit Template</h3>
+                        <span class="resource-type">Figma</span>
+                    </div>
+                    <p class="resource-description" data-lang="es">Plantilla para auditar la consistencia de sistemas de diseño</p>
+                    <p class="resource-description" data-lang="en">Template to audit design system consistency</p>
+                    <div class="resource-arrow" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </div>
+                </a>
+
+                <a href="#" class="resource-item reveal" role="listitem">
+                    <div class="resource-info">
+                        <h3 class="resource-title">WCAG Checklist Pro</h3>
+                        <span class="resource-type">Notion</span>
+                    </div>
+                    <p class="resource-description" data-lang="es">Checklist interactivo para validar accesibilidad en cada fase</p>
+                    <p class="resource-description" data-lang="en">Interactive checklist to validate accessibility at each phase</p>
+                    <div class="resource-arrow" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </div>
+                </a>
+
+                <a href="#" class="resource-item reveal" role="listitem">
+                    <div class="resource-info">
+                        <h3 class="resource-title">Token Naming System</h3>
+                        <span class="resource-type">Figma Plugin</span>
+                    </div>
+                    <p class="resource-description" data-lang="es">Plugin que sugiere nombres semánticos para tus tokens</p>
+                    <p class="resource-description" data-lang="en">Plugin that suggests semantic names for your tokens</p>
+                    <div class="resource-arrow" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </div>
+                </a>
+
+                <a href="#" class="resource-item reveal" role="listitem">
+                    <div class="resource-info">
+                        <h3 class="resource-title" data-lang="es">DesignOps en 2024: Guía práctica</h3>
+                        <h3 class="resource-title" data-lang="en">DesignOps in 2024: A Practical Guide</h3>
+                        <span class="resource-type" data-lang="es">Artículo</span>
+                        <span class="resource-type" data-lang="en">Article</span>
+                    </div>
+                    <p class="resource-description" data-lang="es">Cómo implementar DesignOps sin morir en el intento</p>
+                    <p class="resource-description" data-lang="en">How to implement DesignOps without dying in the attempt</p>
+                    <div class="resource-arrow" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </div>
+                </a>
+
+                <a href="#" class="resource-item reveal" role="listitem">
+                    <div class="resource-info">
+                        <h3 class="resource-title">Component Spec Generator</h3>
+                        <span class="resource-type">Notion</span>
+                    </div>
+                    <p class="resource-description" data-lang="es">Template para documentar componentes de forma sistemática</p>
+                    <p class="resource-description" data-lang="en">Template to document components systematically</p>
+                    <div class="resource-arrow" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </div>
+                </a>
+
+                <a href="#" class="resource-item reveal" role="listitem">
+                    <div class="resource-info">
+                        <h3 class="resource-title" data-lang="es">Accesibilidad para PMs</h3>
+                        <h3 class="resource-title" data-lang="en">Accessibility for PMs</h3>
+                        <span class="resource-type" data-lang="es">Artículo</span>
+                        <span class="resource-type" data-lang="en">Article</span>
+                    </div>
+                    <p class="resource-description" data-lang="es">Por qué la accesibilidad es problema de producto, no de diseño</p>
+                    <p class="resource-description" data-lang="en">Why accessibility is a product problem, not a design one</p>
+                    <div class="resource-arrow" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section class="about" id="about" aria-labelledby="about-title">
+            <header class="section-header reveal">
+                <p class="section-label" data-lang="es">03 — Sobre mí</p>
+                <p class="section-label" data-lang="en">03 — About me</p>
+                <h2 class="section-title" id="about-title" data-lang="es">Un poco de<br>contexto</h2>
+                <h2 class="section-title" id="about-title" data-lang="en">A bit of<br>context</h2>
+            </header>
+
+            <div class="about-content">
+                <div class="about-text reveal">
+                    <div data-lang="es">
+                        <p>
+                            <strong>+20 años diseñando productos digitales.</strong> Empecé en el mundo editorial y la publicidad, pasé por la dirección creativa, y encontré mi lugar en el diseño de producto.
+                        </p>
+                        <p>
+                            He trabajado con equipos en <strong>Volkswagen Group, BBVA, Orange, Openbank, Andbank, Viajes El Corte Inglés y Atresmedia</strong>. Siempre en entornos donde el diseño tiene que escalar y mantenerse consistente.
+                        </p>
+                        <p>
+                            Mi obsesión actual: <strong>reducir la fricción entre diseño y desarrollo</strong>. Design Systems que funcionen de verdad, tokens que se sincronicen, documentación que no quede obsoleta al día siguiente.
+                        </p>
+                        <p>
+                            Cuando no estoy diseñando, probablemente estoy navegando, cacharreando con IA, o mentorizando diseñadores junior.
+                        </p>
+                    </div>
+                    <div data-lang="en">
+                        <p>
+                            <strong>+20 years designing digital products.</strong> I started in editorial and advertising, went through creative direction, and found my place in product design.
+                        </p>
+                        <p>
+                            I've worked with teams at <strong>Volkswagen Group, BBVA, Orange, Openbank, Andbank, Viajes El Corte Inglés and Atresmedia</strong>. Always in environments where design needs to scale and stay consistent.
+                        </p>
+                        <p>
+                            My current obsession: <strong>reducing friction between design and development</strong>. Design Systems that actually work, tokens that sync, documentation that doesn't become obsolete the next day.
+                        </p>
+                        <p>
+                            When I'm not designing, I'm probably sailing, tinkering with AI, or mentoring junior designers.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="about-details reveal">
+                    <div class="detail-block">
+                        <h3 data-lang="es">Especialización</h3>
+                        <h3 data-lang="en">Specialization</h3>
+                        <ul>
+                            <li>Design Systems</li>
+                            <li data-lang="es">Accesibilidad WCAG</li>
+                            <li data-lang="en">WCAG Accessibility</li>
+                            <li>DesignOps</li>
+                            <li>AI + Design</li>
+                        </ul>
+                    </div>
+
+                    <div class="detail-block">
+                        <h3 data-lang="es">Certificaciones</h3>
+                        <h3 data-lang="en">Certifications</h3>
+                        <ul>
+                            <li>Scrum Master — European Scrum Org</li>
+                            <li>Design Systems Pro — Shift+R</li>
+                            <li data-lang="es">Accesibilidad Digital — WeAAAre</li>
+                            <li data-lang="en">Digital Accessibility — WeAAAre</li>
+                        </ul>
+                    </div>
+
+                    <div class="detail-block">
+                        <h3 data-lang="es">Herramientas</h3>
+                        <h3 data-lang="en">Tools</h3>
+                        <ul>
+                            <li>Figma / FigJam</li>
+                            <li>Storybook</li>
+                            <li>Notion</li>
+                            <li>GitHub</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section class="contact" id="contact" aria-labelledby="contact-title">
+            <div class="contact-content">
+                <p class="section-label reveal" style="color: var(--gray-400);" data-lang="es">04 — Contacto</p>
+                <p class="section-label reveal" style="color: var(--gray-400);" data-lang="en">04 — Contact</p>
+                <h2 class="contact-title reveal" id="contact-title">
+                    <a href="mailto:luispascual@icloud.com" data-lang="es">Hablemos</a>
+                    <a href="mailto:luispascual@icloud.com" data-lang="en">Let's talk</a>
+                </h2>
+                <nav class="contact-links reveal" aria-label="Social links">
+                    <a href="https://linkedin.com/in/luispascualcid" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    <a href="https://medium.com/@luispascualcid" target="_blank" rel="noopener noreferrer">Medium</a>
+                    <a href="https://github.com/LuisPascualUX" target="_blank" rel="noopener noreferrer">GitHub</a>
+                </nav>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer role="contentinfo">
+        <span>© 2025 Luis Pascual</span>
+        <span>Madrid, España</span>
+    </footer>
+
+    <!-- Visually hidden utility -->
+    <style>
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+
+    <script>
+        // Language Switch
+        const langButtons = document.querySelectorAll('.lang-switch button');
+        
+        langButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.getAttribute('lang');
+                document.documentElement.setAttribute('lang', lang);
+                
+                langButtons.forEach(b => {
+                    b.classList.remove('active');
+                    b.setAttribute('aria-pressed', 'false');
+                });
+                btn.classList.add('active');
+                btn.setAttribute('aria-pressed', 'true');
+
+                // Update page title
+                document.title = lang === 'es' 
+                    ? 'Luis Pascual — Senior Product Designer'
+                    : 'Luis Pascual — Senior Product Designer';
+            });
+        });
+
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navContainer = document.querySelector('.nav-container');
+
+        menuToggle.addEventListener('click', () => {
+            const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+            menuToggle.setAttribute('aria-expanded', !isOpen);
+            navContainer.classList.toggle('open');
+            
+            // Trap focus when menu is open
+            if (!isOpen) {
+                navContainer.querySelector('a').focus();
+            }
+        });
+
+        // Close menu on link click
+        navContainer.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.setAttribute('aria-expanded', 'false');
+                navContainer.classList.remove('open');
+            });
+        });
+
+        // Close menu on Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navContainer.classList.contains('open')) {
+                menuToggle.setAttribute('aria-expanded', 'false');
+                navContainer.classList.remove('open');
+                menuToggle.focus();
+            }
+        });
+
+        // Nav scroll effect
+        const nav = document.querySelector('nav');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Scroll reveal with Intersection Observer
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+
+                    // Set focus for accessibility
+                    target.setAttribute('tabindex', '-1');
+                    target.focus({ preventScroll: true });
+                }
+            });
+        });
+
+        // Respect reduced motion preference
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+        
+        if (prefersReducedMotion.matches) {
+            document.querySelectorAll('.reveal').forEach(el => {
+                el.classList.add('visible');
+            });
+        }
+    </script>
+</body>
+</html>
