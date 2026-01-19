@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Luis Pascual — Senior Product Designer especializado en Design Systems, Accesibilidad y DesignOps">
+    <meta name="theme-color" content="#0a0a0a">
+    <title>Luis Pascual — Senior Product Designer</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- TIPOGRAFÍA -->
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,800;1,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="cursor"></div>
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+    <!-- NAV: Solo logo + enlaces internos + selector idioma -->
+    <nav role="navigation" aria-label="Navegación principal">
+        <a href="#" class="logo" aria-label="Luis Pascual - Inicio">Luis Pascual</a>
+        
+        <button class="menu-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menú">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div class="nav-container" id="nav-menu">
+            <ul class="nav-links" role="list">
+                <li><a href="#experiments">Experimentos</a></li>
+                <li><a href="#resources">Recursos</a></li>
+                <li><a href="#about">Sobre mí</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+            
+            <div class="lang-toggle" role="group" aria-label="Selección de idioma">
+                <span class="lang-toggle-bg"></span>
+                <a href="index.html" class="lang-option active" aria-current="page">ESP</a>
+                <a href="en.html" class="lang-option">ENG</a>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-content">
+                <p class="hero-greeting">Hola, soy Luis —</p>
+                
+                <h1 class="hero-title" id="hero-title">
+                    <span class="line"><span>Senior Product</span></span>
+                    <span class="line"><span>Designer con foco</span></span>
+                    <span class="line"><span>en Design Systems</span></span>
+                </h1>
+                
+                <p class="hero-subtitle">
+                    +20 años conectando diseño, desarrollo y negocio en entornos de alta exigencia. 
+                    Certificado Scrum Master. Especializado en accesibilidad y DesignOps.
+                </p>
+            </div>
+            <div class="keywords-trail" aria-hidden="true"></div>
+            <div class="hero-scroll" aria-hidden="true">
+                <span class="line"></span>
+                Scroll
+            </div>
+        </section>
+
+        <section class="manifesto" aria-labelledby="manifesto-heading">
+            <h2 id="manifesto-heading" class="visually-hidden">Mi enfoque</h2>
+            
+            <div class="manifesto-content reveal">
+                <p class="manifesto-text">
+                    Aquí no encontrarás case studies.
+                </br>
+                Los proyectos que me han hecho crecer están bajo NDA. 
+                </br>
+                Pero eso no significa que no pueda mostrarte cómo trabajo.
+                </p>
+                </br>
+                <p class="manifesto-text"> <em>Aquí verás</em> lo que construyo por iniciativa propia: plugins, herramientas, artículos y recursos para la comunidad. 
+                </br>
+                Material suficiente para que entiendas cómo pienso, cómo resuelvo problemas y si tiene sentido que hablemos. 
+                </br>
+                <em>Al final, de eso se trata, ¿no?</em>
+                </p>
+            </div>
+            <div class="dot-grid" aria-hidden="true"></div>
+        </section>
+
+        <section class="experiments" id="experiments" aria-labelledby="experiments-title">
+            <header class="section-header reveal">
+                <p class="section-label">01 — Experimentos con IA</p>
+                <h2 class="section-title" id="experiments-title">Aplicaciones que<br>he construido</h2>
+            </header>
+            
+            <div class="experiments-grid">
+                <a href="https://www.figma.com/community/plugin/1593211376978064544/screen-reader-order" target="_blank" rel="noopener noreferrer" class="experiment-card reveal" aria-labelledby="exp-1-title">
+                <span class="card-number" aria-hidden="true">01</span>
+                <div class="card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                 </div>
+                  <h3 class="card-title" id="exp-1-title">Screen Reader Order</h3>
+                 <p class="card-description">
+                  Plugin de Figma que muestra cómo los lectores de pantalla leen tus diseños. Detecta problemas de accesibilidad, permite reordenar elementos con drag & drop y exporta la documentación para desarrollo.
+                 </p>
+                 <span class="card-tag">Figma Plugin</span>
+                </a>
+
+                <a href="#" class="experiment-card reveal" aria-labelledby="exp-2-title">
+                    <span class="card-number" aria-hidden="true">02</span>
+                    <div class="card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    </div>
+                    <h3 class="card-title" id="exp-2-title">TokenSync</h3>
+                    <p class="card-description">
+                        Sincronización automática de design tokens entre Figma y Storybook. Elimina la fricción entre diseño y desarrollo.
+                    </p>
+                    <span class="card-tag">Open Source Tool</span>
+                </a>
+
+                <a href="#" class="experiment-card reveal" aria-labelledby="exp-3-title">
+                    <span class="card-number" aria-hidden="true">03</span>
+                    <div class="card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    </div>
+                    <h3 class="card-title" id="exp-3-title">A11y Copilot</h3>
+                    <p class="card-description">
+                        Asistente conversacional que ayuda a equipos de producto a implementar WCAG 2.2 durante el proceso de diseño, no después.
+                    </p>
+                    <span class="card-tag">AI Assistant</span>
+                </a>
+
+                <a href="#" class="experiment-card reveal" aria-labelledby="exp-4-title">
+                    <span class="card-number" aria-hidden="true">04</span>
+                    <div class="card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
+                    </div>
+                    <h3 class="card-title" id="exp-4-title">Handoff Automator</h3>
+                    <p class="card-description">
+                        Genera documentación de handoff estructurada automáticamente a partir de componentes de Figma. Specs, tokens y variantes.
+                    </p>
+                    <span class="card-tag">Workflow Tool</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="resources" id="resources" aria-labelledby="resources-title">
+            <header class="section-header reveal">
+                <p class="section-label">02 — Recursos</p>
+                <h2 class="section-title" id="resources-title">Aportaciones a<br>la comunidad</h2>
+            </header>
+
+            <div class="resources-list" role="list">
+                <a href="#" class="resource-item reveal" role="listitem">
+                    <div class="resource-info">
+                        <h3 class="resource-title">DS Audit Template</h3>
+                        <span class="resource-type">Figma</span>
+                    </div>
+                    <p class="resource-description">Plantilla para auditar la consistencia de sistemas de diseño</p>
+                    <div class="resource-arrow" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </div>
+                </a>
+
+                <a href="#" class="resource-item reveal" role="listitem">
+                    <div class="resource-info">
+                        <h3 class="resource-title">WCAG Checklist Pro</h3>
+                        <span class="resource-type">Notion</span>
+                    </div>
+                    <p class="resource-description">Checklist interactivo para validar accesibilidad en cada fase</p>
+                    <div class="resource-arrow" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </div>
+                </a>
+
+                <a href="#" class="resource-item reveal" role="listitem">
+                    <div class="resource-info">
+                        <h3 class="resource-title">Token Naming System</h3>
+                        <span class="resource-type">Figma Plugin</span>
+                    </div>
+                    <p class="resource-description">Plugin que sugiere nombres semánticos para tus tokens</p>
+                    <div class="resource-arrow" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </div>
+                </a>
+
+                <a href="#" class="resource-item reveal" role="listitem">
+                    <div class="resource-info">
+                        <h3 class="resource-title">DesignOps en 2024: Guía práctica</h3>
+                        <span class="resource-type">Artículo</span>
+                    </div>
+                    <p class="resource-description">Cómo implementar DesignOps sin morir en el intento</p>
+                    <div class="resource-arrow" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </div>
+                </a>
+
+                <a href="#" class="resource-item reveal" role="listitem">
+                    <div class="resource-info">
+                        <h3 class="resource-title">Component Spec Generator</h3>
+                        <span class="resource-type">Notion</span>
+                    </div>
+                    <p class="resource-description">Template para documentar componentes de forma sistemática</p>
+                    <div class="resource-arrow" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </div>
+                </a>
+
+                <a href="#" class="resource-item reveal" role="listitem">
+                    <div class="resource-info">
+                        <h3 class="resource-title">Accesibilidad para PMs</h3>
+                        <span class="resource-type">Artículo</span>
+                    </div>
+                    <p class="resource-description">Por qué la accesibilidad es problema de producto, no de diseño</p>
+                    <div class="resource-arrow" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="about" id="about" aria-labelledby="about-title">
+            <header class="section-header reveal">
+                <p class="section-label">03 — Sobre mí</p>
+                <h2 class="section-title" id="about-title">Un poco de<br>contexto</h2>
+            </header>
+
+            <div class="about-content">
+                <div class="about-text reveal">
+                    <p>
+                        <strong>+20 años diseñando productos digitales.</strong> Empecé en el mundo editorial y la publicidad, pasé por la dirección creativa, y encontré mi lugar en el diseño de producto.
+                    </p>
+                    <p>
+                        He trabajado con equipos en <strong>Volkswagen Group, BBVA, Orange, Openbank, Andbank, Viajes El Corte Inglés y Atresmedia</strong>. Siempre en entornos donde el diseño tiene que escalar y mantenerse consistente.
+                    </p>
+                    <p>
+                        Mi obsesión actual: <strong>reducir la fricción entre diseño y desarrollo</strong>. Design Systems que funcionen de verdad, tokens que se sincronicen, documentación que no quede obsoleta al día siguiente.
+                    </p>
+                    <p>
+                        Cuando no estoy diseñando, probablemente estoy navegando, cacharreando con IA, o mentorizando diseñadores junior.
+                    </p>
+                </div>
+
+                <div class="about-details reveal">
+                    <div class="detail-block">
+                        <h3>Especialización</h3>
+                        <ul>
+                            <li>Design Systems</li>
+                            <li>Accesibilidad WCAG</li>
+                            <li>DesignOps</li>
+                            <li>AI + Design</li>
+                        </ul>
+                    </div>
+
+                    <div class="detail-block">
+                        <h3>Certificaciones</h3>
+                        <ul>
+                            <li>Scrum Master — European Scrum Org</li>
+                            <li>Design Systems Pro — Shift+R</li>
+                            <li>Accesibilidad Digital — WeAAAre</li>
+                        </ul>
+                    </div>
+
+                    <div class="detail-block">
+                        <h3>Herramientas</h3>
+                        <ul>
+                            <li>Figma / FigJam</li>
+                            <li>Storybook</li>
+                            <li>Notion</li>
+                            <li>GitHub</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT: Aquí están los enlaces a redes sociales -->
+        <section class="contact" id="contact" aria-labelledby="contact-title">
+            <div class="contact-content">
+                
+                <p class="section-label reveal" style="color: var(--gray-400);">04 — Contacto</p>
+                <h2 class="contact-title reveal" id="contact-title">
+                    <a href="mailto:luispascual@icloud.com">Hablemos</a>
+                </h2>
+                <div class="contact-links reveal">
+                    <a href="https://linkedin.com/in/luispascualcid" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    <a href="https://medium.com/@luispascualcid" target="_blank" rel="noopener noreferrer">Medium</a>
+                    <a href="https://github.com/LuisPascualUX" target="_blank" rel="noopener noreferrer">GitHub</a>
+                </div>
+                
+            </div>
+            <div class="keywords-trail" aria-hidden="true"></div>
+            
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <span>© 2026 Luis Pascual</span>
+        <span>Madrid, España</span>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
