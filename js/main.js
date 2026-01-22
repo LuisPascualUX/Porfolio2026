@@ -118,9 +118,13 @@ trailSections.forEach(section => {
     if (!container) return;
 
     const keywords = [
-        'Design Systems', 'Tokens', 'WCAG', 'Figma', 'A11y', 
+        'Design Systems', 'Tokens', 'WCAG', 'Figma', 'A11y', 'Github',
         'DesignOps', 'Components', 'Handoff', 'Storybook', 
-        'Variables', 'IA', 'Accessibility', 'UI', 'UX'
+        'Variables', 'IA', 'Accessibility', 'UI', 'UX', 'Supernova',
+        'Prototyping', 'User Flows', 'Wireframes', 'Responsive',
+        'CSS', 'HTML', 'Cursor', 'Claude', 'Zeroheight', 'Figjam', 
+        'Animation', 'Microinteractions',
+        'User Research', 'Usability Testing', 'Agile', 'Scrum'
     ];
     
     let lastTime = 0;
@@ -134,10 +138,11 @@ trailSections.forEach(section => {
         const rect = section.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-
         const keyword = document.createElement('span');
         keyword.className = 'trail-keyword';
         keyword.textContent = keywords[Math.floor(Math.random() * keywords.length)];
+        const colors = ['#00D4FF', '#FF6EFF', '#B388FF'];
+        keyword.style.color = colors[Math.floor(Math.random() * colors.length)];
         keyword.style.left = x + 'px';
         keyword.style.top = y + 'px';
         keyword.style.fontSize = [0.75, 0.875, 1, 1.125, 1.375, 1.75][Math.floor(Math.random() * 6)] + 'rem';
@@ -170,6 +175,7 @@ if (dotGrid) {
 
     const manifesto = document.querySelector('.manifesto');
     const radius = 100;
+    const colors = ['#00D4FF', '#FF6EFF', '#B388FF'];
 
     manifesto.addEventListener('mousemove', (e) => {
         const rect = dotGrid.getBoundingClientRect();
@@ -181,16 +187,16 @@ if (dotGrid) {
             const pointY = parseFloat(point.style.top);
             const distance = Math.sqrt((mouseX - pointX) ** 2 + (mouseY - pointY) ** 2);
 
-            if (distance < radius) {
-                point.classList.add('active');
-            } else {
-                point.classList.remove('active');
+            if (distance < radius && !point.classList.contains('fading')) {
+                point.classList.add('fading');
+                point.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                setTimeout(() => {
+                    point.classList.remove('fading');
+                    point.style.background = 'var(--white)';
+                }, 1500);
             }
         });
-    });
-
-    manifesto.addEventListener('mouseleave', () => {
-        points.forEach(point => point.classList.remove('active'));
     });
 }
 })();

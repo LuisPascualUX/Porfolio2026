@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- TIPOGRAFÍA -->
-<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,800;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -46,7 +46,7 @@
     <main id="main-content">
         <section class="hero" aria-labelledby="hero-title">
             <div class="hero-content">
-                <p class="hero-greeting">Hola, soy Luis —</p>
+                <p class="hero-greeting">Hola, soy Luis</p>
                 
                 <h1 class="hero-title" id="hero-title">
                     <span class="line"><span>Senior Product</span></span>
@@ -70,25 +70,23 @@
             <h2 id="manifesto-heading" class="visually-hidden">Mi enfoque</h2>
             
             <div class="manifesto-content reveal">
-                <p class="manifesto-text">
-                    Aquí no encontrarás case studies.
-                </br>
-                Los proyectos que me han hecho crecer están bajo NDA. 
-                </br>
-                Pero eso no significa que no pueda mostrarte cómo trabajo.
-                </p>
-                </br>
-                <p class="manifesto-text"> <em>Aquí verás</em> lo que construyo por iniciativa propia: plugins, herramientas, artículos y recursos para la comunidad. 
-                </br>
-                Material suficiente para que entiendas cómo pienso, cómo resuelvo problemas y si tiene sentido que hablemos. 
-                </br>
-                <em>Al final, de eso se trata, ¿no?</em>
-                </p>
+            <p class="manifesto-text">Aquí no encontrarás case studies.
+           
+            <br>Los proyectos que me han hecho crecer están bajo NDA, pero eso no impide entender cómo trabajo.</p>
+    
+            <p class="manifesto-text">Este espacio reúne lo que construyo por iniciativa propia: plugins, herramientas, artículos y recursos para la comunidad. 
+                <br> Proyectos reales, concebidos, dirigidos y afinados por mí, con la IA como apoyo. </p>
+
+            <p class="manifesto-text">Material suficiente para entender <span class="text-green">cómo pienso</span>, <span class="text-green">cómo tomo decisiones</span> y si tiene sentido que <span class="text-green">hablemos</span>. 
+            
             </div>
             <div class="dot-grid" aria-hidden="true"></div>
         </section>
 
         <section class="experiments" id="experiments" aria-labelledby="experiments-title">
+            <video class="experiments-bg-video" autoplay muted loop playsinline aria-hidden="true">
+            <source src="assets/videoia.mp4" type="video/mp4">
+            </video>
             <header class="section-header reveal">
                 <p class="section-label">01 — Experimentos con IA</p>
                 <h2 class="section-title" id="experiments-title">Aplicaciones que<br>he construido</h2>
@@ -107,11 +105,38 @@
                  <span class="card-tag">Figma Plugin</span>
                 </a>
 
-                <a href="#" class="experiment-card reveal" aria-labelledby="exp-2-title">
+<!-- CARD De PRUEBA -->
+                <a href="#" class="experiment-card reveal coming-soon" aria-labelledby="exp-2-title">
+  <div class="card-header">
+    <span class="card-number" aria-hidden="true">02</span>
+    <span class="card-tag-soon">Coming soon</span>
+  </div>
+
+  <div class="card-icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="12" cy="12" r="10"/>
+      <path d="M12 6v6l4 2"/>
+    </svg>
+  </div>
+
+  <h3 class="card-title" id="exp-2-title">TokenSync</h3>
+  <p class="card-description">
+    Sincronización automática de design tokens entre Figma y Storybook. Elimina la fricción entre diseño y desarrollo.
+  </p>
+  <span class="card-tag">Open Source Tool</span>
+</a>
+
+
+
+
+
+                <a href="#" class="experiment-card reveal coming-soon" aria-labelledby="exp-2-title">
                     <span class="card-number" aria-hidden="true">02</span>
+                    
                     <div class="card-icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
                     </div>
+                    <span class="card-tag-soon">Coming soon</span>
                     <h3 class="card-title" id="exp-2-title">TokenSync</h3>
                     <p class="card-description">
                         Sincronización automática de design tokens entre Figma y Storybook. Elimina la fricción entre diseño y desarrollo.
@@ -144,7 +169,7 @@
                 </a>
             </div>
         </section>
-
+<!-- SECCIÓN RECURSOS -->
         <section class="resources" id="resources" aria-labelledby="resources-title">
             <header class="section-header reveal">
                 <p class="section-label">02 — Recursos</p>
@@ -152,71 +177,101 @@
             </header>
 
             <div class="resources-list" role="list">
-                <a href="#" class="resource-item reveal" role="listitem">
-                    <div class="resource-info">
-                        <h3 class="resource-title">DS Audit Template</h3>
-                        <span class="resource-type">Figma</span>
-                    </div>
-                    <p class="resource-description">Plantilla para auditar la consistencia de sistemas de diseño</p>
-                    <div class="resource-arrow" aria-hidden="true">
-                        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                    </div>
-                </a>
+                <!-- Card 1 -->
+                <a href="https://www.notion.so/03bcd480919f4fb1b383849f48a119b6?v=7e4f53a19e354e63ab1527de29b57db6" class="resource-item reveal" role="listitem">
+                 <img src="assets/ComponentsList.png" alt="" class="resource-image">
+                 <div class="resource-content">
+                  <h3 class="resource-title">Components List - Design System Starter</h3>
+                   <span class="resource-type">Notion Template</span>
+                    <p class="resource-description">Plantilla de seguimiento del estado de componentes de un Sistema de Diseño</p>
+                 </div>
+                <div class="resource-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </div>
+                 </a>
 
-                <a href="#" class="resource-item reveal" role="listitem">
-                    <div class="resource-info">
-                        <h3 class="resource-title">WCAG Checklist Pro</h3>
-                        <span class="resource-type">Notion</span>
-                    </div>
-                    <p class="resource-description">Checklist interactivo para validar accesibilidad en cada fase</p>
-                    <div class="resource-arrow" aria-hidden="true">
-                        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                    </div>
-                </a>
+                 <!-- Card 2 -->
+                <a href="https://www.notion.so/Tokens-Typography-2aa26ddd114b813ea56feec425c60e7f" class="resource-item reveal" role="listitem">
+                 <img src="assets/TokensTypo.png" alt="" class="resource-image">
+                 <div class="resource-content">
+                  <h3 class="resource-title">Tokens Typography</h3>
+                   <span class="resource-type">Notion</span>
+                    <p class="resource-description">Tabla para configuración de tokens tipográficos de un Sistema de Diseño</p>
+                 </div>
+                <div class="resource-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </div>
+                 </a>
 
-                <a href="#" class="resource-item reveal" role="listitem">
-                    <div class="resource-info">
-                        <h3 class="resource-title">Token Naming System</h3>
-                        <span class="resource-type">Figma Plugin</span>
-                    </div>
-                    <p class="resource-description">Plugin que sugiere nombres semánticos para tus tokens</p>
-                    <div class="resource-arrow" aria-hidden="true">
-                        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                    </div>
-                </a>
+                  <!-- Toogle Perfecto -->
+                <a href="https://medium.com/@luispascualcid/c%C3%B3mo-dise%C3%B1ar-el-toggle-switch-perfecto-91bf206f53ad" class="resource-item reveal" role="listitem">
+                 <img src="assets/Toogle.png" alt="" class="resource-image">
+                 <div class="resource-content">
+                  <h3 class="resource-title">Cómo diseñar el Toggle/Switch perfecto</h3>
+                   <span class="resource-type">Artículo Medium</span>
+                    <p class="resource-description">El Toggle es uno de los componentes más comunes en un sistema de diseño. Pero también uno de los más mal usados, mal interpretados, y muchas veces, mal diseñados</p>
+                 </div>
+                <div class="resource-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </div>
+                 </a>
 
-                <a href="#" class="resource-item reveal" role="listitem">
-                    <div class="resource-info">
-                        <h3 class="resource-title">DesignOps en 2024: Guía práctica</h3>
-                        <span class="resource-type">Artículo</span>
-                    </div>
-                    <p class="resource-description">Cómo implementar DesignOps sin morir en el intento</p>
-                    <div class="resource-arrow" aria-hidden="true">
-                        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                    </div>
-                </a>
+                  <!-- OKLCH vs HSL -->
 
-                <a href="#" class="resource-item reveal" role="listitem">
-                    <div class="resource-info">
-                        <h3 class="resource-title">Component Spec Generator</h3>
-                        <span class="resource-type">Notion</span>
-                    </div>
-                    <p class="resource-description">Template para documentar componentes de forma sistemática</p>
-                    <div class="resource-arrow" aria-hidden="true">
-                        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                    </div>
-                </a>
+                <a href="https://medium.com/@luispascualcid/la-realidad-del-color-en-los-design-systems-por-qu%C3%A9-debes-adoptar-oklch-y-decir-adi%C3%B3s-a-hex-y-a14704629420" class="resource-item reveal" role="listitem">
+                 <img src="assets/OKLCH.png" alt="" class="resource-image">
+                 <div class="resource-content">
+                  <h3 class="resource-title">La realidad del color en los Design Systems: OKLCH vs HSL y Hex</h3>
+                   <span class="resource-type">Artículo Medium</span>
+                    <p class="resource-description">Artículo que explica por qué deberías adoptar el OKLCH y decir adiós a Hex y HSL en tu Sistema de Diseño</p>
+                 </div>
+                <div class="resource-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </div>
+                 </a>
 
-                <a href="#" class="resource-item reveal" role="listitem">
-                    <div class="resource-info">
-                        <h3 class="resource-title">Accesibilidad para PMs</h3>
-                        <span class="resource-type">Artículo</span>
-                    </div>
-                    <p class="resource-description">Por qué la accesibilidad es problema de producto, no de diseño</p>
-                    <div class="resource-arrow" aria-hidden="true">
-                        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                    </div>
-                </a>
+                   <!-- ACCESIBILIDAD EN FORMS -->
+                <a href="https://medium.com/@luispascualcid/accesibilidad-en-formularios-lo-que-s%C3%AD-y-lo-que-no-debes-hacer-a6dd7098da72" class="resource-item reveal" role="listitem">
+                 <img src="assets/AccesibilidadForms.png" alt="" class="resource-image">
+                 <div class="resource-content">
+                  <h3 class="resource-title">Accesibilidad en formularios: Lo que SÍ y lo que NO debes hacer</h3>
+                   <span class="resource-type">Artículo Medium</span>
+                    <p class="resource-description">Si estás diseñando un producto digital y este tiene formularios, o campos de entrada de datos, la accesibilidad es fundamental</p>
+                 </div>
+                <div class="resource-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </div>
+                 </a>
+
+                <!-- Card 5 -->
+                <a href="https://medium.com/@luispascualcid/accesibilidad-en-formularios-lo-que-s%C3%AD-y-lo-que-no-debes-hacer-a6dd7098da72" class="resource-item reveal" role="listitem">
+                 <img src="assets/AccesibilidadForms.png" alt="" class="resource-image">
+                 <div class="resource-content">
+                  <h3 class="resource-title">Accesibilidad en formularios: Lo que SÍ y lo que NO debes hacer</h3>
+                   <span class="resource-type">Artículo Medium</span>
+                    <p class="resource-description">Si estás diseñando un producto digital y este tiene formularios, o campos de entrada de datos, la accesibilidad es fundamental</p>
+                 </div>
+                <div class="resource-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </div>
+                 </a>
+
+                <!-- Card 6 -->
+                <a href="https://medium.com/@luispascualcid/c%C3%B3mo-dise%C3%B1ar-el-toggle-switch-perfecto-91bf206f53ad" class="resource-item reveal" role="listitem">
+                 <img src="assets/Toogle.png" alt="" class="resource-image">
+                 <div class="resource-content">
+                  <h3 class="resource-title">Cómo diseñar el Toggle/Switch perfecto</h3>
+                   <span class="resource-type">Artículo Medium</span>
+                    <p class="resource-description">El Toggle es uno de los componentes más comunes en un sistema de diseño. Pero también uno de los más mal usados, mal interpretados, y muchas veces, mal diseñados</p>
+                 </div>
+                <div class="resource-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </div>
+                 </a>
+            
+
+
+               
             </div>
         </section>
 
@@ -229,16 +284,14 @@
             <div class="about-content">
                 <div class="about-text reveal">
                     <p>
-                        <strong>+20 años diseñando productos digitales.</strong> Empecé en el mundo editorial y la publicidad, pasé por la dirección creativa, y encontré mi lugar en el diseño de producto.
+                        <strong>+25 años diseñando productos digitales.</strong> Vengo de la publicidad y la dirección creativa, pero encontré mi sitio en el diseño de producto.</p>
+                        He trabajado con equipos de producto en compañías como <strong>Volkswagen Group, BBVA, Orange, Openbank, Andbank, Viajes El Corte Inglés o Atresmedia</strong>, siempre en contextos donde el diseño necesita escalar sin perder coherencia.
                     </p>
                     <p>
-                        He trabajado con equipos en <strong>Volkswagen Group, BBVA, Orange, Openbank, Andbank, Viajes El Corte Inglés y Atresmedia</strong>. Siempre en entornos donde el diseño tiene que escalar y mantenerse consistente.
+                        Mi foco actual es <strong>reducir la fricción entre diseño y desarrollo</strong>: Design Systems que se usan de verdad, tokens sincronizados y documentación que no caduca al día siguiente.
                     </p>
                     <p>
-                        Mi obsesión actual: <strong>reducir la fricción entre diseño y desarrollo</strong>. Design Systems que funcionen de verdad, tokens que se sincronicen, documentación que no quede obsoleta al día siguiente.
-                    </p>
-                    <p>
-                        Cuando no estoy diseñando, probablemente estoy navegando, cacharreando con IA, o mentorizando diseñadores junior.
+                        Fuera del trabajo, <strong>experimento con IA</strong>, <strong>escribo</strong> sobre diseño y sistemas, <strong>mentorizo</strong> a diseñadores junior (muchos acaban siendo amigos), toco la <strong>guitarra</strong> en un grupo, y sigo manchándome las manos con <strong>acrílicos</strong> y rotuladores.
                     </p>
                 </div>
 
@@ -247,7 +300,7 @@
                         <h3>Especialización</h3>
                         <ul>
                             <li>Design Systems</li>
-                            <li>Accesibilidad WCAG</li>
+                            <li>Accesibilidad</li>
                             <li>DesignOps</li>
                             <li>AI + Design</li>
                         </ul>
@@ -256,19 +309,20 @@
                     <div class="detail-block">
                         <h3>Certificaciones</h3>
                         <ul>
-                            <li>Scrum Master — European Scrum Org</li>
-                            <li>Design Systems Pro — Shift+R</li>
-                            <li>Accesibilidad Digital — WeAAAre</li>
+                            <li>Design Systems Pro → Shift+R</li>
+                             <li>DesignOps → Instituto Tramontana</li>
+                            <li>Accesibilidad Digital → WeAAAre</li>
+                            <li>Scrum Master → European Scrum Org</li>
                         </ul>
                     </div>
 
                     <div class="detail-block">
                         <h3>Herramientas</h3>
                         <ul>
-                            <li>Figma / FigJam</li>
-                            <li>Storybook</li>
-                            <li>Notion</li>
-                            <li>GitHub</li>
+                            <li>Figma | FigJam</li>
+                            <li>Claude | Chat GPT | Gemini</li>
+                            <li>GitHub | Notion</li>
+                            <li>Storybook | Zeroheight | Supernova</li>
                         </ul>
                     </div>
                 </div>
