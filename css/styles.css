@@ -392,18 +392,8 @@ section { padding: 7.5rem 3rem; }
     letter-spacing: 0.02em;
 }
 
-.manifesto-text em {
-    font-style: italic;
-    color: var(--gray-400);
-}
 
-.manifesto-small {
-    font-size: clamp(0.575rem, 21vw, 1.55rem);
-    margin: 1.5rem 0 2.5rem;
-    color: rgb(139, 151, 140);
-}
-
-.text-green {
+.text-pink {
     color: rgb(251, 0, 255);
 }
 
@@ -432,24 +422,27 @@ section { padding: 7.5rem 3rem; }
 .card-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
 }
 
-.card-number {
-  line-height: 1;
+.card-header .card-number {
+  margin-bottom: 0;
 }
 
 
 
 .experiment-card.coming-soon {
-    pointer-events: none;
     opacity: 0.7;
 }
 
 .experiment-card {
-    background: var(--white);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border-radius: 1rem;
-    border: 1px solid var(--gray-300);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     padding: 2.5rem;
     text-decoration: none;
     color: inherit;
@@ -457,11 +450,14 @@ section { padding: 7.5rem 3rem; }
     flex-direction: column;
     min-height: 22rem;
     transition: transform 0.6s var(--ease-out-expo), box-shadow 0.6s var(--ease-out-expo);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
 }
 
 .experiment-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 2rem 4rem rgba(0,0,0,0.08);
+    box-shadow: 0 2rem 4rem rgba(0,0,0,0.15);
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
 }
 
 .card-number {
