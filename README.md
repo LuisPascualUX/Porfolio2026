@@ -6,6 +6,7 @@ Senior Product Designer | Design Systems | Accesibilidad | DesignOps
 
 - `index.html` — Versión final (WCAG AA, responsive, bilingüe ES/EN)
 - `v1-basic.html` — Primera versión (solo animaciones)
+ - `CHANGELOG.md` — Registro de cambios y versiones
 
 ## Características
 
