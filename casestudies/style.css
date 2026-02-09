@@ -1,0 +1,1001 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Fuente */
+@import url('https://fonts.googleapis.com/css2?family=Satoshi:wght@400;500;700&display=swap');
+
+body {
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 300;
+  margin: 0;
+  padding: 0;
+  color: #444;
+  background-color: #fff;
+  line-height: 1.6;
+}
+a {
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 500;
+  margin: 0;
+  color: #0657D8;
+  text-decoration: underline;
+  padding: 0;
+  line-height: 1.6;
+}
+
+/* Estilo para cuando el input tiene el foco FOCUS */
+a:focus {
+  /*background-color: yellow;  Cambia el fondo a amarillo */
+  outline: 4px #FF0CDF dotted; /* Añade un borde azul */
+}
+
+/* Saltar al contenido principal */
+    .skip-to-main-content {
+        position: absolute; /* Permite moverlo fuera de la pantalla */
+        top: -40px;       /* Lo sube, ocultándolo por defecto */
+        left: 0;
+        padding: 8px;
+        background-color: #fff; /* Color de fondo visible */
+        color: #000;           /* Color de texto visible */
+        text-decoration: none;
+        z-index: 100;          /* Asegura que esté sobre otros elementos */
+        transition: top 0.3s ease; /* Transición suave al mostrarse */
+    }
+
+    .skip-to-main-content:focus {
+        top: 0; /* Lo trae a la vista */
+    }
+
+
+/* HEADER */
+header {
+  position: sticky;
+  top: 0;
+  background-color: white; /* Asegura que el fondo sea sólido */
+  z-index: 1000; /* Que quede por encima del resto del contenido */
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05); /* Sombra sutil al hacer scroll */
+  transition: all 0.3s ease;
+}
+
+/* Section Headings */
+h1 {
+  font-weight: 300;
+  margin-bottom: 2rem;
+  font-size: 3rem;
+}
+
+h2 {
+  font-weight: 300;
+  margin-bottom: 0rem;
+  font-size: 1.8rem;
+}
+
+h3 {
+  font-weight: 300;
+  margin-bottom: 0rem;
+  margin-top: 0.5rem;
+  padding-left: 0.5rem;
+  font-size: 1.2rem;
+}
+
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Navbar base */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: white;
+  position: relative;
+  z-index: 1000;
+}
+
+/* LOGO */
+.logo {
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 300;
+  font-size: 1.2rem;
+}
+
+.logo-sub {
+  font-weight: 400;
+  color: #767676; /* gris tenue Pasa Accesibilidad*/
+  font-size: 0.75rem;
+}
+
+
+/* LOGOS BRANDS */
+.companies {
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.companies-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: #444;
+}
+
+.company-logos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 2rem;
+  align-items: center;
+  justify-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.company-logos img {
+  max-height: 100px;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+  filter: grayscale(100%);
+}
+
+
+/* NAVIGATION */
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+/* Hover y estado activo para los links del menú */
+.nav-links li a {
+  text-decoration: none;
+  font-family: 'Satoshi', sans-serif;
+  color: #444;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+/* Hover */
+.nav-links li a:hover {
+  background-color: #eee;
+}
+
+/* Estado seleccionado (página activa) */
+.nav-links li a.active {
+  background-color: #444;
+  color: #fff;
+  font-weight: 500;
+}
+
+/* HAMBURGUESA */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 2rem;
+    background: white;
+    flex-direction: column;
+    width: 200px;
+    padding: 1rem;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links li {
+    margin-bottom: 1rem;
+  }
+
+  .nav-links li:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* CONTAINER */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.section-intro {
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+/* ========HOME========= */
+/* Layout base */
+.intro-section {
+  padding: 60px 20px;
+  background-color: #fff;
+}
+
+.intro-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* Avatar */
+.intro-avatar img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 4%;
+  box-shadow: 0 10px 30px rgba(0.1, 0.1, 0.1, 0.1);
+  animation: fadeIn 1s ease forwards;
+}
+
+/* Texto */
+.intro-text {
+  flex: 1;
+  min-width: 280px;
+  animation: fadeInUp 1s ease forwards;
+}
+
+.intro-text h1 {
+  font-size: 32px;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+.intro-text p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.intro-text a {
+  color: #0657D8;
+  text-decoration: underline;
+}
+
+.intro-text a:hover {
+  color: #0657D8;
+  background-color: #F2F7FF;
+}
+
+/* CTA Button */
+.cta-button {
+  display: inline-block;
+  margin-top: 20px;
+  background-color: #EBF2FF;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #F2F7FF;
+  border: 2px #FF0CDF  dotted;
+
+}
+
+/* Animations */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .intro-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .intro-text h1 {
+    font-size: 24px;
+  }
+
+  .intro-text p {
+    font-size: 16px;
+  }
+
+  .cta-button {
+    padding: 10px 20px;
+  }
+}
+
+
+/* ========== CARDS: Case Studies (verticales) ========== */
+
+.case-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.case-card {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  background-color: #fff;
+  transition: transform 0.2s ease;
+}
+
+.case-card:hover {
+  transform: translateY(-4px);
+}
+
+.case-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.case-card h2 {
+  margin: 1rem;
+  font-size: 1.3rem;
+}
+
+.case-card .description {
+  margin: 0 1rem 1rem;
+  font-size: 1rem;
+  color: #555;
+}
+
+.case-card .meta {
+  margin: 0 1rem 1rem;
+  padding: 0;
+  margin-top: 1rem;
+  list-style: none;
+  font-size: 0.9rem;
+  color: #777;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.year-badge {
+  background-color: #EADBFD; /* MORADO */
+  color: #432A62;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+}
+
+
+.platform-badge{
+  background: #DFFDDB; /* VERDE */
+  color: #30622A;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+}
+
+.meta {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0 0rem 1rem;
+  padding: 0;
+  font-size: 0.9rem;
+}
+
+
+
+/* Link */
+.more-link {
+  display: block;
+  margin: 0 1rem 1rem;
+  color: #0657D8;
+  text-decoration: none;
+  font-weight: 300;
+}
+.more-link:hover {
+  background-color: #F2F7FF;
+}
+
+/* ========== CARDS: Other Projects (horizontales) ========== */
+
+.other-projects {
+  margin-top: 4rem;
+}
+
+.project-horizontal-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+  background-color: #fff;
+}
+
+.project-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.project-text {
+  padding: 1rem;
+}
+
+.project-text h3 {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+.project-text p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.project-text .meta {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.view-more {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: #0657D8;
+  text-decoration: none;
+  font-weight: 300;
+}
+
+.view-more:hover {
+   background-color: #F2F7FF;
+}
+
+
+
+/* CAROUSEL */
+.carousel {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.carousel.open {
+  display: flex;
+}
+
+.carousel-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.carousel-content img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 4px;
+}
+
+.carousel-content button {
+  background: none;x
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.close-carousel {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+}
+
+
+
+/* ================MODAL  CARROUSEL 2======== */
+/* Modal Carousel */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 10, 0.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal[aria-hidden="false"] {
+  display: flex;
+}
+/*
+.modal-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 80%;
+}
+*/
+.modal-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/*
+.modal-content img {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  margin: auto;
+  border-radius: 8px;
+}
+*/
+
+
+
+.modal-content img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: none; /* Quita la limitación */
+}
+
+
+
+
+
+.modal-prev,
+.modal-next {
+  color: white; /* Asegura que el texto (la flecha) sea blanco */
+  background-color: rgba(0, 0, 0, 0.2); /* Fondo oscuro translúcido */
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1rem;
+  font-weight: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  position: fixed; /* Fijo en la pantalla, no sobre la imagen */
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.modal-prev:hover,
+.modal-next:hover {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-prev {
+  position: absolute;
+  top: 50%;
+  left: 10px; /* Más separado del borde */
+  transform: translateY(-50%);
+}
+
+.modal-next {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+/* ========== PROCESS PAGE ========== */
+
+.hero img {
+   margin-top: 3rem;
+  max-width: 100%;
+  height: auto;
+}
+
+.section-intro {
+  font-size: 1.125rem;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  margin-bottom: 3rem;
+  color: #444;
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.phase {
+  background: #f9f9f9;
+  padding: 2rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.phasebbva {
+  background: #E1EFFA;
+  padding: 2rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.phaseorange {
+  background: #FDF1E2;
+  padding: 2rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.phaseinvestigador {
+  background: #F8E7E8;
+  padding: 2rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  transition: background-color 0.3s ease-in-out;
+}
+
+
+.phase-number {
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: #888;
+  margin-bottom: 0.5rem;
+}
+
+.phase-title {
+  font-size: 1.4rem;
+  font-weight: 100;
+  margin-bottom: 1rem;
+}
+
+.phase-tools {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-top: 1rem;
+}
+
+
+
+/* IMAGEN DOBLE DIAMANTE */
+.double-diamond {
+  max-width: 800px;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.double-diamond img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+/* LISTADO DE PROCESO */
+.process-list {
+  list-style: none;
+  padding-left: 0.5rem;
+  margin-bottom: 3rem;
+ 
+}
+
+.process-list li {
+  font-weight: 300;
+  position: relative;
+  margin-left: 0.5rem;
+  padding-left: 1.2rem;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.process-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 8px;
+  height: 8px;
+  background-color: #ccc; 
+  border-radius: 30%;
+}
+
+
+/* IMAGEN ABOUT ME */
+.about-hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 2rem 1rem;
+}
+
+.hero-image img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.hero-text {
+  flex: 1;
+  min-width: 280px;
+}
+
+.hero-text h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero-text p {
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* MAS ABOUT ME */
+.about-values {
+  margin: 3rem 0;
+  font-family: 'Satoshi', sans-serif;
+}
+
+
+.process-list li a {
+ font-family: 'Satoshi', sans-serif;
+  font-weight: 500;
+  margin: 0;
+  color: #0657D8;
+  text-decoration: underline;
+  padding: 0;
+  line-height: 1.6;
+}
+
+
+.process-list a:hover {
+  color: #0657D8;
+  background-color: #F2F7FF;
+}
+
+.about-block p {
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.decor-icon {
+  font-size: 1.4rem;
+  margin-right: 0.5rem;
+  color: #999;
+  vertical-align: middle;
+}
+ 
+.highlight-quote {
+  font-style: italic;
+  color: #555;
+  background-color: #f9f9f9;
+  border-left: 2px solid #ccc;
+  padding: 1rem 1.5rem;
+  margin: 2rem 0;
+  font-size: 1.2rem;
+}
+/* =============== CASE STUDY DETALLE ============== */
+.detail-section {
+  margin-bottom: 6rem;
+}
+
+
+
+/* =============== REDES SOCIALES============== */
+
+.social-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+.social-list li {
+  margin-bottom: 1rem;
+}
+
+.social-list a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #0657D8;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.social-list a:hover {
+background-color: #F2F7FF;
+}
+
+.social-icon {
+  color: #0657D8;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}
+
+/* FOOTER */
+footer {
+  background: #f1f1f1;
+  padding: 0rem 1rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #444;
+}
+
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: #fff;
+    position: absolute;
+    top: 60px;
+    right: 1rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .project-horizontal-card {
+    flex-direction: column;
+  }
+
+  .project-horizontal-card .project-image,
+  .project-horizontal-card .project-text {
+    flex: unset;
+  }
+
+  .modal-close {
+    font-size: 1.5rem;
+    top: 0.75rem;
+    right: 0.75rem;
+  }
+}
+
+
+.modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.modal-content {
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+
+.image-wrapper {
+  max-height: 100%;
+}
+
+#modal-image {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  display: block;
+}
+
+.modal-prev,
+.modal-next {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  color: white;
+  background: rgba(0, 0, 0, 0.3);
+  border: none;
+  cursor: pointer;
+  z-index: 10000;
+  padding: 0.5rem 1rem;
+}
+
+.modal-prev {
+  left: 2rem;
+}
+
+.modal-next {
+  right: 2rem;
+}
+
+.modal-close {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  background: none;
+  color: white;
+  border: none;
+  cursor: pointer;
+  z-index: 10000;
+}

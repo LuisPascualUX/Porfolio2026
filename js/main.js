@@ -8,6 +8,7 @@
     // Mobile Menu
     const menuToggle = document.querySelector('.menu-toggle');
     const navContainer = document.querySelector('.nav-container');
+    const mobileCloseBtn = document.querySelector('.mobile-close-btn');
     const body = document.body;
 
     if (menuToggle && navContainer) {
@@ -17,12 +18,22 @@
             menuToggle.setAttribute('aria-expanded', !isOpen);
             navContainer.classList.toggle('open');
             body.classList.toggle('menu-open', !isOpen);
-            
+
             if (!isOpen) {
                 const firstLink = navContainer.querySelector('a');
                 if (firstLink) firstLink.focus();
             }
         });
+
+        // Mobile close button
+        if (mobileCloseBtn) {
+            mobileCloseBtn.addEventListener('click', () => {
+                menuToggle.setAttribute('aria-expanded', 'false');
+                navContainer.classList.remove('open');
+                body.classList.remove('menu-open');
+                menuToggle.focus();
+            });
+        }
 
         navContainer.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
@@ -69,6 +80,18 @@
             ticking = true;
         }
     });
+
+    // Language toggle position
+    const langToggleBg = document.querySelector('.lang-toggle-bg');
+    const langOptions = document.querySelectorAll('.lang-option');
+
+    if (langToggleBg && langOptions.length > 0) {
+        langOptions.forEach((option, index) => {
+            if (option.classList.contains('active')) {
+                langToggleBg.style.transform = `translateX(${index * 100}%)`;
+            }
+        });
+    }
 
     // Scroll reveal
     const revealObserver = new IntersectionObserver((entries) => {
